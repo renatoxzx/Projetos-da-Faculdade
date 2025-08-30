@@ -1,0 +1,114 @@
+/* Nome: Renato Junio de Faria Carrijo Pacheco.
+   Idade: 19 anos.
+   Faculdade: ADS // Primeiro periodo.
+   Nome do programa: Simulador de Caixa.
+   Linguagem: Java.
+   Data: 30/08/2025.
+*/
+
+import java.util.*;
+
+public class SimuladorDeCaixa2 {
+		public static void main(String[] args) {
+				Scanner s = new Scanner (System.in);
+				
+					//Declarar as variáveis
+					int saldo, q100, q50, q20, q10, q5, q2, saque, opcao, soma;
+					saldo = 1000;
+				
+					boolean executando = true;
+					
+					//processo
+					while (executando) {
+						System.out.print("=== MENU ===" + "\n1 - Sacar Dinheiro" + "\n2 - Depositar dinheiro" + "\n3 - Ver saldo atual" + "\n4 - Sair" + "\nEscolha uma opção: ");
+						opcao = s.nextInt();
+						
+					switch (opcao) {
+						//colocar o saldo que vai ser sacado
+						case 1: 
+						System.out.print("Qual vai ser o valor do seu saque?");
+						saque = s.nextInt();
+						
+					if (saque <= saldo) {
+						
+					if (saque < 2) {
+						System.out.println("Você nao tem saldo o suficiente. o valor minimo para saque é R$2");
+					
+					}
+				
+						//calculando as notas
+						q100 = saque / 100;
+						saque = saque % 100;
+					
+						q50 = saque / 50;
+						saque = saque % 50;
+					
+						q20 = saque / 20;
+						saque = saque % 20;
+					
+						q10 = saque / 10;
+						saque = saque % 10;
+					
+						q5 = saque / 5;
+						saque = saque % 5;
+					
+						q2 = saque /2;
+						saque = saque % 2;
+					
+					
+					// Atualiza o saldo
+					saldo -= (q100 * 100 + q50 * 50 + q20 * 20 + q10 * 10 + q5 * 5 + q2 * 2);
+
+					// Exibe as notas
+						System.out.println("Saque realizado com sucesso!");
+						System.out.println("Notas entregues:");
+						
+					if (q100 > 0) 
+						System.out.println("R$100: " + q100);
+					if (q50 > 0) 
+						System.out.println("R$50: " + q50);
+					if (q20 > 0)
+						System.out.println("R$20: " + q20);
+					if (q10 > 0)
+						System.out.println("R$10: " + q10);
+					if (q5 > 0)
+						System.out.println("R$5: " + q5);
+					if (q2 > 0) 
+						System.out.println("R$2: " + q2);
+					
+                        System.out.println("Novo saldo: R$" + saldo);
+						
+					}
+					break;
+						
+					case 2:
+						//deposito para o saldo
+						System.out.println("Quanto que você deseja depositar?");
+						soma = s.nextInt(); // porque não funciona??
+						saldo = saldo + soma; // porque não funciona??
+						System.out.println("Deposito realizado com sucesso! Novo saldo: R$" + saldo);
+						
+					break;
+						
+					case 3:
+						//mostra o saldo
+						System.out.println("O seu saldo bancario se encontra a R$" + saldo);
+						
+					break;
+						
+					case 4:
+						//acaba com o loop do sistema
+						System.out.println("Saindo...");
+						executando = false;
+						
+					break;
+					
+					default:
+					//caso o usuario quebre alguma regra
+                    System.out.println("Opcao inválida. Tente novamente.");
+            }
+        }
+
+        s.close();
+    }
+}
